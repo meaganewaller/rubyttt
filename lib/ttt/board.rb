@@ -18,6 +18,9 @@ module TicTacToe
       initialize
     end
 
+    def current_game_state
+      @spaces.map {|x| x}
+    end
+
   end
 end
-

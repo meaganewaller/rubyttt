@@ -32,5 +32,12 @@ module TicTacToe
         board.get(3).should == "X"
         board.reset.should == [" ", " ", " ", " ", " ", " ", " ", " ", " "]
       end
+
+      it 'knows the current game state' do
+        board.place_mark(0, "X")
+        board.place_mark(4, "X")
+        board.place_mark(8, "O")
+        board.current_game_state.should == ["X", " ", " ", " ", "X", " ", " ", " ", "O"]
+      end
   end
 end
