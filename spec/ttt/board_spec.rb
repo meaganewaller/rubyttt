@@ -47,5 +47,14 @@ module TicTacToe
         board.current_game_state.should == ["X", " ", " ", " ", "X", " ", " ", " ", "O"]
       end
 
+      it 'knows the game state when there are moves' do
+        board.place_mark(0, "X")
+        board.place_mark(1, "X")
+        board.current_game_state.should == ["X", "X", " ", " ", " ", " ", " ", " ", " "]
+      end
+
+      it 'knows if a space is empty' do
+        board.is_space_empty?(7).should == true
+      end
   end
 end

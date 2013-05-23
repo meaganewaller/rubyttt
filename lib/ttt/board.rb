@@ -26,5 +26,10 @@ module TicTacToe
       @spaces.map {|x| x}
     end
 
+    def is_space_empty?(space)
+      return true if @spaces[space] = " "
+      return false
+    end
+
   end
 end
