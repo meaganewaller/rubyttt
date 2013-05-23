@@ -19,6 +19,19 @@ module TicTacToe
       end
       winner
     end
+
+    def winning_player(board)
+      board.winning_solutions.each do |sol|
+        if sol.uniq.length == 1 && sol[0] != " "
+          return sol[0]
+        end
+      end
+    end
+
+    def is_game_tied?(board)
+      return true if board.available_spaces.count == 0 && winner?(board) == false
+      return false
+    end
   end
 end
 
