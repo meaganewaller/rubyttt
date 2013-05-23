@@ -15,5 +15,14 @@ module TicTacToe
       scoring.is_board_empty?(board).should == false
     end
 
+    it 'knows if there is a winner' do
+      scoring = Scoring.new
+      board = Board.new
+      board.place_mark(1, "X")
+      board.place_mark(4, "X")
+      board.place_mark(7, "X")
+      scoring.winner?(board).should == true
+    end
+
   end
 end
