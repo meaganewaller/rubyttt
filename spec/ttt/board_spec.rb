@@ -21,6 +21,13 @@ module TicTacToe
         board.get(1).should == "X"
       end
 
+      it 'can undo a mark in a space' do
+        board.place_mark(0, "X")
+        board.get(0).should == "X"
+        board.undo(0)
+        board.get(0).should == " "
+      end
+
       it 'can reset the board' do
         board.place_mark(0, "X")
         board.place_mark(1, "X")
@@ -39,5 +46,6 @@ module TicTacToe
         board.place_mark(8, "O")
         board.current_game_state.should == ["X", " ", " ", " ", "X", " ", " ", " ", "O"]
       end
+
   end
 end
