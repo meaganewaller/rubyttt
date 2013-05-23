@@ -20,5 +20,17 @@ module TicTacToe
         board.place_mark(1, "X")
         board.get(1).should == "X"
       end
+
+      it 'can reset the board' do
+        board.place_mark(0, "X")
+        board.place_mark(1, "X")
+        board.place_mark(2, "X")
+        board.place_mark(3, "X")
+        board.get(0).should == "X"
+        board.get(1).should == "X"
+        board.get(2).should == "X"
+        board.get(3).should == "X"
+        board.reset.should == [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+      end
   end
 end

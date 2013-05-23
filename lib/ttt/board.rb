@@ -14,6 +14,10 @@ module TicTacToe
       @spaces[space] = mark
     end
 
+    def reset
+      initialize
+    end
+
   end
 end
 
