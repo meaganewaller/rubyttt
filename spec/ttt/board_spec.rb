@@ -56,5 +56,57 @@ module TicTacToe
       it 'knows if a space is empty' do
         board.is_space_empty?(7).should == true
       end
+
+      it 'knows if a space is not empty' do
+        board.place_mark(4, "X")
+        board.is_space_empty?(4).should == false
+      end
+
+      it 'knows what spaces are available' do
+        board.place_mark(0, "X")
+        board.place_mark(1, "X")
+        board.place_mark(8, "X")
+        board.available_spaces.should == [2,3,4,5,6,7]
+      end
+
+      describe "Board Set Up" do
+        before(:each) do
+          board.place_mark(0, "X")
+          board.place_mark(4, "X")
+          board.place_mark(8, "O")
+        end
+
+        it 'has rows' do
+          board.rows.should == [["X", " ", " "],
+                               [" ", "X", " "],
+                               [" ", " ", "O"]]
+        end
+
+        it 'has columns' do
+          board.columns.should == [["X", " ", " "],
+                                   [" ", "X", " "],
+                                   [" ", " ", "O"]]
+        end
+
+        it 'has a diagonal from top left to bottom right' do
+          board.diagonal_ltr.should == ["X", "X", "O"]
+        end
+
+        it 'has a diagonal from top right to bottom left' do
+          board.diagonal_rtl.should == [" ", "X", " "]
+        end
+
+        it 'has winning solutions' do
+          board.winning_solutions.should == [["X", " ", " "],
+                                             [" ", "X", " "],
+                                             [" ", " ", "O"],
+                                             ["X", " ", " "],
+                                             [" ", "X", " "],
+                                             [" ", " ", "O"],
+                                             ["X", "X", "O"],
+                                             [" ", "X", " "]]
+        end
+      end
+
   end
 end
