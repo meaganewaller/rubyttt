@@ -6,7 +6,8 @@ module TicTacToe
     end
 
     def is_board_empty?(board)
-      true
+      return true if board.available_spaces.count == 9
+      return false 
     end
   end
 end
