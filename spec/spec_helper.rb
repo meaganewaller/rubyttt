@@ -2,5 +2,5 @@ require 'simplecov'
 SimpleCov.start
 
 require 'rubygems'
-require 'pry'
+require 'debugger'
 require 'ttt'
