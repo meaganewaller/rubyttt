@@ -80,7 +80,23 @@ module TicTacToe
         board.place_mark(computer.make_move(board), "O")
         board.spaces[8].should == "O"
      end
-      
+    end
+
+    context "two spaces available" do
+      it "wins instead of block" do
+        # O | X | O
+        # O | X | 5
+        # X | 7 | O
+        board.place_mark(0, "O")
+        board.place_mark(1, "X")
+        board.place_mark(2, "O")
+        board.place_mark(3, "O")
+        board.place_mark(4, "X")
+        board.place_mark(6, "X")
+        board.place_mark(7, "O")
+        board.place_mark(computer.make_move(board), "O")
+        board.spaces[5].should == "O"
+      end
     end
   end
 end
