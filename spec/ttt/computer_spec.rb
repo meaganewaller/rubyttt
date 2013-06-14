@@ -265,9 +265,9 @@ module TicTacToe
     end
 
     context "computer makes first move" do
-      it "picks an optimal space" do
+      it "places move on the board" do
         board.place_mark(computer.make_move(board), "O")
-        board.spaces.should_not include([0 || 6 || 8 || 2 || 4])
+        board.spaces.should include("O")
       end
     end
 
@@ -282,7 +282,17 @@ module TicTacToe
         board.place_mark(computer.make_move(board), "O")
         board.spaces[0].should == "O"
       end
-      
+
+      it "stops forks" do
+        # 0 | X | 2
+        # X | O | 5
+        # 6 | 7 | 8
+        board.place_mark(1, "X")
+        board.place_mark(4, "O")
+        board.place_mark(3, "X")
+        board.place_mark(computer.make_move(board), "O")
+        board.spaces[0].should == "O"
+      end
     end
   end
 end
