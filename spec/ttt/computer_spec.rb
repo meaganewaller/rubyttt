@@ -271,5 +271,18 @@ module TicTacToe
       end
     end
 
+    context "forks" do
+      it "prevents forks from happening" do
+        # 0 | X | 2 
+        # 3 | O | 5
+        # 6 | 7 | X
+        board.place_mark(1, "X")
+        board.place_mark(4, "O")
+        board.place_mark(8, "X")
+        board.place_mark(computer.make_move(board), "O")
+        board.spaces[0].should == "O"
+      end
+      
+    end
   end
 end
