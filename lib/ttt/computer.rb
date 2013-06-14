@@ -1,3 +1,17 @@
+#module TicTacToe
+#  class Computer
+#    attr_accessor :marker
+#
+#    def initialize(marker)
+#      @marker = marker
+#    end
+#
+#    def opponent
+#      @marker == "X" ? "O" : "X"
+#    end
+#  end  
+#end
+
 module TicTacToe
   class Computer
     attr_accessor :marker
@@ -11,8 +25,8 @@ module TicTacToe
       return @best_move
     end
 
-    def opponent(type)
-      type == "X" ? "O" : "X"
+    def opponent(marker)
+      marker == "X" ? "O" : "X"
     end
 
     def value(board, player)
@@ -30,26 +44,31 @@ module TicTacToe
     end
 
     def best_move(board)
-      test_board = board.dup
-      negamax(test_board, @marker, 1)
-    end
+      negamax(board, @marker, 1)
+    end 
 
     def negamax(board, player, depth)
-      return value(board, player)  if winner?(board, player)
+      if board.is_game_over?
+        return value(board, player)
+      else
 
-      best_rank = -999
+      best_rank = -9999
       opponent = opponent(player)
 
       board.available_spaces.each do |space|
-        test_board = board.dup
-        test_board.place_mark(space, player)
-        rank = -negamax(test_board, opponent, depth + 1)
+        #puts "Player: #{player} Space: #{space}"
+        board.place_mark(space, player)
+        rank = -negamax(board, opponent, depth + 1)
+        #puts "Player: #{player} Space: #{space} - Rank: #{rank}"
+        board.undo(space)
         if rank > best_rank
           best_rank = rank
-          @best_move = space
+          @best_move = space if depth == 1
         end
       end
       return best_rank
     end
   end
+  end
 end
+

@@ -8,10 +8,6 @@ module TicTacToe
         board.spaces.should == [0, 1, 2, 3, 4, 5, 6, 7, 8]
       end
 
-      it 'can create a board copy' do
-        board.dup.spaces.should_not be board.spaces
-      end
-
       it 'can retrieve a space' do
         board.get(7).should == 7 
       end
@@ -23,6 +19,11 @@ module TicTacToe
       it 'can read a mark placed in a space' do
         board.place_mark(1, "X")
         board.get(1).should == "X"
+      end
+
+      it 'can undo a mark' do
+        board.place_mark(1, "X")
+        board.undo(1).should == 1
       end
 
       it 'can reset the board' do

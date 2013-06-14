@@ -10,13 +10,12 @@ module TicTacToe
       @spaces[space]
     end
 
-    def dup
-      Board.new(@spaces.dup) 
-    end
-
-
     def place_mark(space, mark)
       @spaces[space.to_i] = mark
+    end
+
+    def undo(space)
+      @spaces[space.to_i] = space.to_i
     end
 
     def reset
