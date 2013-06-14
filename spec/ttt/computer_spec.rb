@@ -243,14 +243,25 @@ module TicTacToe
 
     context "seven available spaces" do
       it "picks best possible move" do
-      # O | 1 | 2
-      # 3 | X | 5
-      # 6 | 7 | 8
-      board.place_mark(0, "O")
-      board.place_mark(4, "X")
-      board.place_mark(computer.make_move(board), "O")
-      board.spaces.should_not include([1 || 3 || 5 || 7])
+        # O | 1 | 2
+        # 3 | X | 5
+        # 6 | 7 | 8
+        board.place_mark(0, "O")
+        board.place_mark(4, "X")
+        board.place_mark(computer.make_move(board), "O")
+        board.spaces.should_not include([1 || 3 || 5 || 7])
       end
+    end
+
+    context "eight available spaces" do
+      it "picks best first move" do
+        # X | 1 | 2 
+        # 3 | 4 | 5
+        # 6 | 7 | 8
+        board.place_mark(0, "X")
+        board.place_mark(computer.make_move(board), "O")
+        board.spaces.should_not include([1 || 4 || 5 || 7 || 3])
       end
+    end
   end
 end
