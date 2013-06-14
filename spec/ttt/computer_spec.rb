@@ -272,7 +272,7 @@ module TicTacToe
     end
 
     context "forks" do
-      it "prevents forks from happening" do
+      it "prevents opponent from creating a fork" do
         # 0 | X | 2 
         # 3 | O | 5
         # 6 | 7 | X
@@ -283,15 +283,15 @@ module TicTacToe
         board.spaces[0].should == "O"
       end
 
-      it "stops forks" do
-        # 0 | X | 2
-        # X | O | 5
-        # 6 | 7 | 8
-        board.place_mark(1, "X")
+      it "stops opponent from creating a fork diagonally" do
+        # X | 1 | 2
+        # 3 | O | 5
+        # 6 | 7 | X
+        board.place_mark(0, "X")
         board.place_mark(4, "O")
-        board.place_mark(3, "X")
+        board.place_mark(8, "X")
         board.place_mark(computer.make_move(board), "O")
-        board.spaces[0].should == "O"
+        board.spaces.should_not include([1 || 3 || 5 || 7])
       end
     end
   end
