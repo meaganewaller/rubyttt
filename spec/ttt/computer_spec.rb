@@ -263,5 +263,13 @@ module TicTacToe
         board.spaces.should_not include([1 || 4 || 5 || 7 || 3])
       end
     end
+
+    context "computer makes first move" do
+      it "picks an optimal space" do
+        board.place_mark(computer.make_move(board), "O")
+        board.spaces.should_not include([0 || 6 || 8 || 2 || 4])
+      end
+    end
+
   end
 end
