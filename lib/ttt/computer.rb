@@ -7,8 +7,12 @@ module TicTacToe
     end
 
     def make_move(board)
-      best_move(board)
-      return @best_move
+      if board.available_spaces.count == 9
+        [0,2,4,6,8].sample
+      else
+        best_move(board)
+        return @best_move
+      end
     end
 
     def opponent(marker)
@@ -42,10 +46,8 @@ module TicTacToe
       opponent = opponent(player)
 
       board.available_spaces.each do |space|
-        #puts "Player: #{player} Space: #{space}"
         board.place_mark(space, player)
         rank = -negamax(board, opponent, depth + 1)
-        #puts "Player: #{player} Space: #{space} - Rank: #{rank}"
         board.undo(space)
         if rank > best_rank
           best_rank = rank

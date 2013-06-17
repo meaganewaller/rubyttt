@@ -110,7 +110,6 @@ module TicTacToe
         board.place_mark(6, "X")
         board.place_mark(7, "O")
         board.place_mark(computer.make_move(board), "O")
-        print board.print_board
         board.spaces[4].should == "O"
       end
 
@@ -126,7 +125,6 @@ module TicTacToe
         board.place_mark(6, "O")
         board.place_mark(7, "X")
         board.place_mark(computer.make_move(board), "O")
-        print board.print_board
         board.spaces[5].should == "O"
       end
     end
@@ -143,7 +141,6 @@ module TicTacToe
         board.place_mark(6, "O")
         board.place_mark(8, "X")
         board.place_mark(computer.make_move(board), "O")
-        print board.print_board
         board.spaces[0].should == "O"
       end
 
@@ -158,7 +155,6 @@ module TicTacToe
         board.place_mark(6, "O")
         board.place_mark(7, "X")
         board.place_mark(computer.make_move(board), "O")
-        print board.print_board
         board.spaces[2].should == "O"
       end
     end
@@ -265,10 +261,10 @@ module TicTacToe
     end
 
     context "computer makes first move" do
-      it "places move on the board" do
+     it "picks first move randomly" do
         board.place_mark(computer.make_move(board), "O")
-        board.spaces.should include("O")
-      end
+        board.spaces.should_not include([0 || 2 || 6 || 8 || 4])
+     end
     end
 
     context "forks" do
