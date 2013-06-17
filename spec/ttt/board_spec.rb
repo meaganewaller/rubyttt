@@ -96,6 +96,7 @@ module TicTacToe
 
         it 'prints the board' do
           output = <<-BOARD
+
        X | 1 | 2
       ---+---+---
        3 | X | 5
