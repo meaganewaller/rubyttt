@@ -54,7 +54,8 @@ module TicTacToe
     end
 
     def print_board
-      board = <<-BOARD
+      <<-BOARD
+
        #{@spaces[0]} | #{@spaces[1]} | #{@spaces[2]}
       ---+---+---
        #{@spaces[3]} | #{@spaces[4]} | #{@spaces[5]}

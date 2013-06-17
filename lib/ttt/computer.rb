@@ -1,17 +1,3 @@
-#module TicTacToe
-#  class Computer
-#    attr_accessor :marker
-#
-#    def initialize(marker)
-#      @marker = marker
-#    end
-#
-#    def opponent
-#      @marker == "X" ? "O" : "X"
-#    end
-#  end  
-#end
-
 module TicTacToe
   class Computer
     attr_accessor :marker
@@ -67,8 +53,8 @@ module TicTacToe
         end
       end
       return best_rank
+      end
     end
-  end
   end
 end
 

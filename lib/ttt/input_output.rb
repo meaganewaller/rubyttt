@@ -13,5 +13,13 @@ module TicTacToe
       print message
     end
 
+    #def printmagenta(message)
+     # print "\033[35m#{message}\0c33[m"
+    #end
+    
+    #def printcyan(message)
+     # print "\033[36m#{message}\0c33[m"
+    #end
+
   end
 end

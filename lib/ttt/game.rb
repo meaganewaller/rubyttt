@@ -41,6 +41,7 @@ module TicTacToe
     def start
       until @board.is_game_over?
         start_turn
+        @io.outprint "->"
         space = get_move
         make_move(space)
         end_turn
@@ -48,16 +49,14 @@ module TicTacToe
     end
 
     def start_turn
-      display_board
+      display_board 
       @io.output "It's #{@current_player}s Turn"
     end
 
     def get_move
       move = ""
       until @board.available_spaces.include?(move)
-        @io.outprint "->"
         move = get_input
-        display_board
       end
       return move
     end
