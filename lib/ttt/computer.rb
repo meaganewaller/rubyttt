@@ -8,7 +8,7 @@ module TicTacToe
 
     def make_move(board)
       if board.available_spaces.count == 9
-        [0,2,4,6,8].sample
+        (0..8).to_a.sample
       else
         best_move(board)
         return @best_move
