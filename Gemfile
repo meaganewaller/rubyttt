@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 gem 'rspec'
-gem 'json', '~> 1.7.7'
+gem 'json', '~> 2.3.0'
 gem 'pry'
 gem 'guard-rspec'
 gem 'guard-cucumber'
